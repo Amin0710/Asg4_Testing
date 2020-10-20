@@ -97,8 +97,10 @@ public class Loan implements Serializable, ILoan {
 	
 	@Override
 	public void updateOverDueStatus(Date currentDate) {
-		if (state == LoanState.CURRENT && currentDate.after(dueDate)) {
+		if ((state == LoanState.CURRENT  && currentDate.after(dueDate))  ){
 			this.state = LoanState.OVER_DUE;
+		}else if (state==LoanState.OVER_DUE  && currentDate.before(dueDate) ){
+			this.state=LoanState.CURRENT;
 		}
 	}
 

@@ -246,6 +246,7 @@ public class Library implements Serializable, ILibrary {
 		if (loan.isOverDue()) {
 			Date dueDate = loan.getDueDate();
 			long daysOverDue = Calendar.getInstance().getDaysDifference(dueDate);
+			System.out.println("days overdue: "+daysOverDue);
 			fine = daysOverDue * FINE_PER_DAY;
 		}
 		return fine;
